@@ -32,13 +32,15 @@ end
 Espinita.current_user_method = :authenticated_user
 
 my_model.histroy_from_audits_for(:name)
-=> [{},
-  {},
-  {}]
+=> [{:change: {name: "Arglebargle"}, changed_at: 2015-05-13 15:28:22 0700},
+  {changes: {name: "Baz"}, changed_at: 2014-05-13 15:28:22 -0700}, 
+  {changes: {name: "Foo"}, changed_at: 2013-05-13 15:28:22 -0700}]
   
 my_model.histroy_from_audits_for([:name, :settings])
-=> [{},
-  {}, {}]
+=> [{:changes=>{:name=>"Baz", :setting=>""}, :changed_at=>2015-05-03 15:33:58 0700},
+  {:changes=>{:name=>"Arglebargle", :settings=>"IHOP"}, :changed_at=>2015-03-24 15:33:58 0700},
+  {:changes=>{:name=>"Walrus"}, :changed_at=>2014-05-13 15:33:58 07:00}]
+  
 
 model.name
 model.setings
